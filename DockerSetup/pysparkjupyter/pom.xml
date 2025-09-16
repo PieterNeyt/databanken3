@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>temp</groupId>
+  <artifactId>temp</artifactId>
+  <version>1.0</version>
+    <properties>
+        <spark_version>4.0.0</spark_version>
+        <scala_version>2.13</scala_version>
+        <postgresql_version>42.7.7</postgresql_version>
+        <delta_version>4.0.0</delta_version>
+    </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql-kafka-0-10_2.13</artifactId>
+      <version>${spark_version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.7.7</version>
+    </dependency>
+    <dependency>
+        <groupId>io.delta</groupId>
+        <artifactId>delta-spark_2.13</artifactId>
+        <version>${delta_version}</version>
+    </dependency>
+  </dependencies>
+</project>
