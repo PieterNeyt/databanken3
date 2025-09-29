@@ -5,17 +5,17 @@
 
 ## TreasureFoundFact
 
-| Column | Source | SCD Type |
-|--------|--------|----------|
-| UserSurKey | UserDim.UserSurKey | n.v.t. (fact table) |
-| DateSurKey | DateDim.DateSurKey | n.v.t. (fact table) |
-| SeasonSurKey | SeasonDim.SeasonSurKey (via LogDate + Treasure.City.Country) | n.v.t. (fact table) |
+| Column | Source                                                                                | SCD Type |
+|--------|---------------------------------------------------------------------------------------|----------|
+| UserSurKey | UserDim.UserSurKey                                                                    | n.v.t. (fact table) |
+| DateSurKey | DateDim.DateSurKey                                                                    | n.v.t. (fact table) |
+| SeasonSurKey | SeasonDim.SeasonSurKey (via LogDate + Treasure.City.Country)                          | n.v.t. (fact table) |
 | RainSurKey | RainDim.RainSurKey (via Weather API op basis van LogDate + Treasure.City coördinaten) | n.v.t. (fact table) |
-| TreasureTypeSurKey | TreasureTypeDim.TreasureTypeSurKey | n.v.t. (fact table) |
-| StandardValue | Berekend veld (gebaseerd op Difficulty + Terrain) | n.v.t. (fact table) |
-| Duration | Berekend: LogDate - SessionStart | n.v.t. (fact table) |
-| CreationDate | Log.LogDate (timestamp van de log) | n.v.t. (fact table) |
-| LogType | Log.LogType (0=General Message, 1=Not Found, 2=Found) | n.v.t. (fact table) |
+| TreasureTypeSurKey | TreasureTypeDim.TreasureTypeSurKey                                                    | n.v.t. (fact table) |
+| StandardValue | standaard 1                                                                           | n.v.t. (fact table) |
+| Duration | Berekend: LogDate - SessionStart                                                      | n.v.t. (fact table) |
+| CreationDate | Log.LogDate (timestamp van de log)                                                    | n.v.t. (fact table) |
+| LogType | Log.LogType (0=General Message, 1=Not Found, 2=Found)                                 | n.v.t. (fact table) |
 
 ## DateDim
 
