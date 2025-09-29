@@ -2,6 +2,7 @@
 
 
 # Bronanalyse
+
 ## TreasureFoundFact
 
 | Column | Source | SCD Type |
@@ -20,28 +21,28 @@
 
 | Column | Source | SCD Type |
 |--------|--------|----------|
-| DateSurKey | Gegenereerd (datum in YYYYMMDD formaat) | Type 0 |
-| DateId | Gegenereerd (volgnummer) | Type 0 |
-| Day | Afgeleid uit Log.LogDate | Type 0 |
-| Week | Afgeleid uit Log.LogDate | Type 0 |
-| Month | Afgeleid uit Log.LogDate | Type 0 |
-| Year | Afgeleid uit Log.LogDate | Type 0 |
+| DateSurKey | Gegenereerd (datum in YYYYMMDD formaat) | Type 1 |
+| DateId | Gegenereerd (volgnummer) | Type 1 |
+| Day | Afgeleid uit Log.LogDate | Type 1 |
+| Week | Afgeleid uit Log.LogDate | Type 1 |
+| Month | Afgeleid uit Log.LogDate | Type 1 |
+| Year | Afgeleid uit Log.LogDate | Type 1 |
 
 ## SeasonDim
 
 | Column | Source | SCD Type |
 |--------|--------|----------|
-| SeasonSurKey | Gegenereerd (volgnummer) | Type 0 |
-| SeasonName | Afgeleid uit Log.LogDate + Treasure.City.Country (meteorologisch seizoen) | Type 0 |
+| SeasonSurKey | Gegenereerd (volgnummer) | Type 1 |
+| SeasonName | Afgeleid uit Log.LogDate + Treasure.City.Country (meteorologisch seizoen) | Type 1 |
 
 ## RainDim
 
 | Column | Source | SCD Type |
 |--------|--------|----------|
-| RainSurKey | Gegenereerd (volgnummer) | Type 0 |
-| RainCode | Weather API (http://openweathermap.org/weather-conditions) op basis van LogDate + Treasure.City coördinaten | Type 0 |
-| RainDescription | Weather API - beschrijving van weercode | Type 0 |
-| RainIcon | Weather API - icon code | Type 0 |
+| RainSurKey | Gegenereerd (volgnummer) | Type 1 |
+| RainCode | Weather API (http://openweathermap.org/weather-conditions) op basis van LogDate + Treasure.City coördinaten | Type 1 |
+| RainDescription | Weather API - beschrijving van weercode | Type 1 |
+| RainIcon | Weather API - icon code | Type 1 |
 
 **Opmerking RainDim:** Deze dimensie bevat maximaal 3 rijen:
 - 1 rij voor alle weertypes MET regen (weercode 200-699)
@@ -60,34 +61,19 @@
 
 ## UserDim
 
+## UserDim
+
 | Column | Source | SCD Type |
 |--------|--------|----------|
-| UserSurKey | Gegenereerd (volgnummer - surrogate key) | Type 2 |
-| UserId | User.UserId (natuurlijke sleutel) | Type 2 |
-| firstName | User.FirstName | Type 2 |
-| lastName | User.LastName | Type 2 |
-| email | User.Email | Type 2 |
-| address | User.Street + User.Number | Type 2 |
-| country | User.City.Country | Type 2 |
-| experienceLevel | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | Type 2 |
-| isDedicator | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE | Type 2 |
-| startLogDate | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd) | Type 2 |
-| endLogDate | Gegenereerd: einddatum versie (NULL voor huidige versie) | Type 2 |
-| isCurrentVersion | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies | Type 2 |
-
-## Toelichting SCD Types
-
-**Type 0 (Geen wijzigingen):**
-- **DateDim**: Datums zijn statische referentiedata die niet wijzigen
-- **SeasonDim**: Seizoenen zijn vaste definities gebaseerd op datum en locatie
-- **RainDim**: Bevat vaste classificaties van regentypes (met regen, zonder regen, onbekend)
-
-**Type 1 (Overschrijven):**
-- **TreasureTypeDim**: Eigenschappen van een treasure (moeilijkheidsgraad, terrein, aantal stages) kunnen wijzigen. Historiek van deze wijzigingen is niet relevant voor de analyses - we willen altijd de meest actuele informatie.
-
-**Type 2 (Historiek bijhouden):**
-- **UserDim**: Voor woonplaats, land, experienceLevel en isDedicator moet de situatie op het moment van de logdatum geraadpleegd kunnen worden. Als een gebruiker verandert van Amateur naar Professional, moeten logs vóór die wijziging gekoppeld zijn aan de Amateur-versie en logs erna aan de Professional-versie. Dit vereist:
-  - `startLogDate`: wanneer deze versie actief werd
-  - `endLogDate`: wanneer deze versie eindigde (NULL voor huidige versie)
-  - `isCurrentVersion`: boolean om snel de huidige versie te identificeren
-
+| UserSurKey | Gegenereerd (volgnummer - surrogate key) | n.v.t. (technisch veld) |
+| UserId | User.UserId (natuurlijke sleutel) | n.v.t. (natuurlijke sleutel) |
+| firstName | User.FirstName | Type 1 |
+| lastName | User.LastName | Type 1 |
+| email | User.Email | Type 1 |
+| address | User.Street + User.Number | Type 1 |
+| country | User.City.Country | **Type 2** (expliciet vereist in [S1]) |
+| experienceLevel | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | **Type 2** (expliciet vereist in [S1]) |
+| isDedicator | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE | **Type 2** (expliciet vereist in [S1]) |
+| startLogDate | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd) | n.v.t. (technisch veld voor Type 2) |
+| endLogDate | Gegenereerd: einddatum versie (NULL voor huidige versie) | n.v.t. (technisch veld voor Type 2) |
+| isCurrentVersion | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies | n.v.t. (technisch veld voor Type 2) |
