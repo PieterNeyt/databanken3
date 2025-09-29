@@ -61,8 +61,6 @@
 
 ## UserDim
 
-## UserDim
-
 | Column | Source | SCD Type |
 |--------|--------|---|
 | UserSurKey | Gegenereerd (volgnummer - surrogate key, wijzigt per versie) | 2 |
