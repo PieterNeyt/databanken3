@@ -2,7 +2,7 @@
 $network = "datacomponents"
 $pysparkjupyter_name="sparkjupyter"
 $postgres_name="postgres"
-$project_root = "C:/DevProjects/Databricks/"
+$project_root = "C:\Kdg Projecten\PyCharm\ProjectDP"
 
 # Check if the network exists
 $networkExists = docker network ls --format "{{.Name}}" | Select-String -Pattern "^$network$"
