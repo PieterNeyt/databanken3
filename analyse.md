@@ -15,18 +15,20 @@
 | StandardValue | standaard 1                                                                           | n.v.t. (fact table) |
 | Duration | Berekend: LogDate - SessionStart                                                      | n.v.t. (fact table) |
 | CreationDate | Log.LogDate (timestamp van de log)                                                    | n.v.t. (fact table) |
-| LogType | Log.LogType (0=General Message, 1=Not Found, 2=Found)                                 | n.v.t. (fact table) |
 
 ## DateDim
 
-| Column | Source | SCD Type |
-|--------|--------|----------|
-| DateSurKey | Gegenereerd (datum in YYYYMMDD formaat) | 1 |
-| DateId | Gegenereerd (volgnummer) | 1 |
-| Day | Afgeleid uit Log.LogDate | 1 |
-| Week | Afgeleid uit Log.LogDate | 1 |
-| Month | Afgeleid uit Log.LogDate | 1 |
-| Year | Afgeleid uit Log.LogDate | 1 |
+| Column        | Source | SCD Type |
+|---------------|--------|----------|
+| DateSurKey    | Gegenereerd (datum in YYYYMMDD formaat) | 1 |
+| DateId        | Gegenereerd (volgnummer) | 1 |
+| Day           | Afgeleid uit Log.LogDate | 1 |
+| Week          | Afgeleid uit Log.LogDate | 1 |
+| Month         | Afgeleid uit Log.LogDate | 1 |
+| Year          | Afgeleid uit Log.LogDate | 1 |
+| MonthOfThYear | Afgeleid uit Log.LogDate | 1 |
+| DayOfTheWeek  | Afgeleid uit Log.LogDate | 1 |
+| IsWeekDay     | Afgeleid uit Log.LogDate | 1 |
 
 ## SeasonDim
 
@@ -42,7 +44,6 @@
 | RainSurKey | Gegenereerd (volgnummer) | 1 |
 | RainCode | Weather API (http://openweathermap.org/weather-conditions) op basis van LogDate + Treasure.City coördinaten | 1 |
 | RainDescription | Weather API - beschrijving van weercode | 1 |
-| RainIcon | Weather API - icon code | 1 |
 
 **Opmerking RainDim:** Deze dimensie bevat maximaal 3 rijen:
 - 1 rij voor alle weertypes MET regen (weercode 200-699)
@@ -61,18 +62,18 @@
 
 ## UserDim
 
-| Column | Source | SCD Type |
-|--------|--------|---|
-| UserSurKey | Gegenereerd (volgnummer - surrogate key, wijzigt per versie) | 2 |
-| UserId | User.UserId (natuurlijke sleutel, blijft constant over versies) | 2 |
-| firstName | User.FirstName | 1 |
-| lastName | User.LastName | 1 |
-| email | User.Email | 1 |
-| address | User.Street + User.Number | 1 |
-| country | User.City.Country | 2 |
-| experienceLevel | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | 2 |
-| isDedicator | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE | 2 |
-| startLogDate | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd) | 2 |
-| endLogDate | Gegenereerd: einddatum versie (NULL voor huidige versie) | 2 |
+| Column           | Source | SCD Type |
+|------------------|--------|---|
+| UserSurKey       | Gegenereerd (volgnummer - surrogate key, wijzigt per versie) | 2 |
+| UserId           | User.UserId (natuurlijke sleutel, blijft constant over versies) | 2 |
+| firstName        | User.FirstName | 1 |
+| lastName         | User.LastName | 1 |
+| email            | User.Email | 1 |
+| address          | User.Street + User.Number | 1 |
+| country          | User.City.Country | 2 |
+| experienceLevel  | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | 2 |
+| isDedicator      | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE | 2 |
+| StartScd         | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd) | 2 |
+| EndScd           | Gegenereerd: einddatum versie (NULL voor huidige versie) | 2 |
 | isCurrentVersion | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies | 2 |
 
