@@ -32,10 +32,10 @@
 
 ## SeasonDim
 
-| Column | Source | SCD Type |
-|--------|--------|----------|
-| SeasonSurKey | Gegenereerd (volgnummer) | 1 |
-| SeasonName | Afgeleid uit Log.LogDate + Treasure.City.Country (meteorologisch seizoen) | 1 |
+| Column | Source                                                                   | SCD Type |
+|--------|--------------------------------------------------------------------------|----------|
+| SeasonSurKey | Gegenereerd (volgnummer)                                                 | 1 |
+| SeasonName | Afgeleid uit Log.LogDate + coordinaten laatste stage van treasure stages | 1 |
 
 ## RainDim
 

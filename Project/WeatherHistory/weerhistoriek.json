@@ -1,6 +1,6 @@
 [
   {
-    "zipCode": "00000b50-fa30-4e70-9a68-5ddc4dbb0b6d",
+    "zipCode": "513-1121",
     "city": "Kishitacho",
     "timestamp": "2025-10-05T08:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -8,7 +8,7 @@
     "wind": { "speed": 3.2, "deg": 150 }
   },
   {
-    "zipCode": "00000b50-fa30-4e70-9a68-5ddc4dbb0b6d",
+    "zipCode": "513-1121",
     "city": "Kishitacho",
     "timestamp": "2025-10-05T12:00:00Z",
     "weather": { "id": 801, "main": "Clouds", "description": "few clouds", "icon": "02d" },
@@ -16,7 +16,7 @@
     "wind": { "speed": 4.1, "deg": 190 }
   },
   {
-    "zipCode": "00000b50-fa30-4e70-9a68-5ddc4dbb0b6d",
+    "zipCode": "513-1121",
     "city": "Kishitacho",
     "timestamp": "2025-10-05T16:00:00Z",
     "weather": { "id": 500, "main": "Rain", "description": "light rain", "icon": "10d" },
@@ -25,7 +25,7 @@
   },
 
   {
-    "zipCode": "00003e94-c1d6-4236-899d-33e7e6f08495",
+    "zipCode": "678 01",
     "city": "Blansko",
     "timestamp": "2025-10-05T07:00:00Z",
     "weather": { "id": 741, "main": "Mist", "description": "mist", "icon": "50d" },
@@ -33,7 +33,7 @@
     "wind": { "speed": 1.8, "deg": 90 }
   },
   {
-    "zipCode": "00003e94-c1d6-4236-899d-33e7e6f08495",
+    "zipCode": "678 01",
     "city": "Blansko",
     "timestamp": "2025-10-05T13:00:00Z",
     "weather": { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" },
@@ -41,7 +41,7 @@
     "wind": { "speed": 3.5, "deg": 130 }
   },
   {
-    "zipCode": "00003e94-c1d6-4236-899d-33e7e6f08495",
+    "zipCode": "678 01",
     "city": "Blansko",
     "timestamp": "2025-10-05T18:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01n" },
@@ -50,7 +50,7 @@
   },
 
   {
-    "zipCode": "0000444e-fbc8-47a0-8497-593bc3624e65",
+    "zipCode": "3133",
     "city": "Frauendorf",
     "timestamp": "2025-10-05T06:00:00Z",
     "weather": { "id": 500, "main": "Rain", "description": "light rain", "icon": "10d" },
@@ -58,7 +58,7 @@
     "wind": { "speed": 4.0, "deg": 200 }
   },
   {
-    "zipCode": "0000444e-fbc8-47a0-8497-593bc3624e65",
+    "zipCode": "3133",
     "city": "Frauendorf",
     "timestamp": "2025-10-05T10:00:00Z",
     "weather": { "id": 211, "main": "Thunderstorm", "description": "thunderstorm with rain", "icon": "11d" },
@@ -66,7 +66,7 @@
     "wind": { "speed": 6.5, "deg": 230 }
   },
   {
-    "zipCode": "0000444e-fbc8-47a0-8497-593bc3624e65",
+    "zipCode": "3133",
     "city": "Frauendorf",
     "timestamp": "2025-10-05T14:00:00Z",
     "weather": { "id": 802, "main": "Clouds", "description": "scattered clouds", "icon": "03d" },
@@ -75,7 +75,7 @@
   },
 
   {
-    "zipCode": "00004673-9faf-4999-be99-5a65b5d95208",
+    "zipCode": "35320",
     "city": "La Bosse-de-Bretagne",
     "timestamp": "2025-10-05T09:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -83,7 +83,7 @@
     "wind": { "speed": 3.0, "deg": 210 }
   },
   {
-    "zipCode": "00004673-9faf-4999-be99-5a65b5d95208",
+    "zipCode": "35320",
     "city": "La Bosse-de-Bretagne",
     "timestamp": "2025-10-05T12:00:00Z",
     "weather": { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" },
@@ -91,7 +91,7 @@
     "wind": { "speed": 4.2, "deg": 240 }
   },
   {
-    "zipCode": "00004673-9faf-4999-be99-5a65b5d95208",
+    "zipCode": "35320",
     "city": "La Bosse-de-Bretagne",
     "timestamp": "2025-10-05T15:00:00Z",
     "weather": { "id": 500, "main": "Rain", "description": "light rain", "icon": "10d" },
@@ -100,7 +100,7 @@
   },
 
   {
-    "zipCode": "00004ab0-6e4a-4dc5-94b2-9478bf0bca2f",
+    "zipCode": "500-8844",
     "city": "Yoshinomachi",
     "timestamp": "2025-10-05T08:00:00Z",
     "weather": { "id": 600, "main": "Snow", "description": "light snow", "icon": "13d" },
@@ -108,7 +108,7 @@
     "wind": { "speed": 2.8, "deg": 310 }
   },
   {
-    "zipCode": "00004ab0-6e4a-4dc5-94b2-9478bf0bca2f",
+    "zipCode": "500-8844",
     "city": "Yoshinomachi",
     "timestamp": "2025-10-05T14:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -116,7 +116,7 @@
     "wind": { "speed": 2.0, "deg": 290 }
   },
   {
-    "zipCode": "00004ab0-6e4a-4dc5-94b2-9478bf0bca2f",
+    "zipCode": "500-8844",
     "city": "Yoshinomachi",
     "timestamp": "2025-10-05T20:00:00Z",
     "weather": { "id": 802, "main": "Clouds", "description": "scattered clouds", "icon": "03n" },
@@ -125,7 +125,7 @@
   },
 
   {
-    "zipCode": "0000607d-161b-4525-98aa-e905ebb63b33",
+    "zipCode": "152636",
     "city": "Василево",
     "timestamp": "2025-10-05T06:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -133,7 +133,7 @@
     "wind": { "speed": 2.5, "deg": 180 }
   },
   {
-    "zipCode": "0000607d-161b-4525-98aa-e905ebb63b33",
+    "zipCode": "152636",
     "city": "Василево",
     "timestamp": "2025-10-05T12:00:00Z",
     "weather": { "id": 501, "main": "Rain", "description": "moderate rain", "icon": "10d" },
@@ -141,7 +141,7 @@
     "wind": { "speed": 4.8, "deg": 200 }
   },
   {
-    "zipCode": "0000607d-161b-4525-98aa-e905ebb63b33",
+    "zipCode": "152636",
     "city": "Василево",
     "timestamp": "2025-10-05T18:00:00Z",
     "weather": { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04n" },
@@ -150,7 +150,7 @@
   },
 
   {
-    "zipCode": "00007e93-824f-4133-9b92-49e70dc459d4",
+    "zipCode": "413528",
     "city": "Shiradhon",
     "timestamp": "2025-10-05T05:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -158,7 +158,7 @@
     "wind": { "speed": 2.1, "deg": 100 }
   },
   {
-    "zipCode": "00007e93-824f-4133-9b92-49e70dc459d4",
+    "zipCode": "413528",
     "city": "Shiradhon",
     "timestamp": "2025-10-05T11:00:00Z",
     "weather": { "id": 500, "main": "Rain", "description": "light rain", "icon": "10d" },
@@ -166,7 +166,7 @@
     "wind": { "speed": 3.5, "deg": 160 }
   },
   {
-    "zipCode": "00007e93-824f-4133-9b92-49e70dc459d4",
+    "zipCode": "413528",
     "city": "Shiradhon",
     "timestamp": "2025-10-05T17:00:00Z",
     "weather": { "id": 211, "main": "Thunderstorm", "description": "thunderstorm with rain", "icon": "11d" },
@@ -175,7 +175,7 @@
   },
 
   {
-    "zipCode": "00009a97-b598-4e31-9906-1f7ec0127d28",
+    "zipCode": "66072",
     "city": "Hacienda los Ayala",
     "timestamp": "2025-10-05T07:00:00Z",
     "weather": { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" },
@@ -183,7 +183,7 @@
     "wind": { "speed": 3.1, "deg": 90 }
   },
   {
-    "zipCode": "00009a97-b598-4e31-9906-1f7ec0127d28",
+    "zipCode": "66072",
     "city": "Hacienda los Ayala",
     "timestamp": "2025-10-05T13:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -191,7 +191,7 @@
     "wind": { "speed": 2.8, "deg": 140 }
   },
   {
-    "zipCode": "00009a97-b598-4e31-9906-1f7ec0127d28",
+    "zipCode": "66072",
     "city": "Hacienda los Ayala",
     "timestamp": "2025-10-05T19:00:00Z",
     "weather": { "id": 500, "main": "Rain", "description": "light rain", "icon": "10n" },
@@ -200,7 +200,7 @@
   },
 
   {
-    "zipCode": "0000a26e-c3c7-4060-aa2c-430f8e86ede9",
+    "zipCode": "465-0058",
     "city": "Kifune",
     "timestamp": "2025-10-05T08:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" },
@@ -208,7 +208,7 @@
     "wind": { "speed": 2.0, "deg": 190 }
   },
   {
-    "zipCode": "0000a26e-c3c7-4060-aa2c-430f8e86ede9",
+    "zipCode": "465-0058",
     "city": "Kifune",
     "timestamp": "2025-10-05T12:00:00Z",
     "weather": { "id": 500, "main": "Rain", "description": "light rain", "icon": "10d" },
@@ -216,7 +216,7 @@
     "wind": { "speed": 3.0, "deg": 210 }
   },
   {
-    "zipCode": "0000a26e-c3c7-4060-aa2c-430f8e86ede9",
+    "zipCode": "465-0058",
     "city": "Kifune",
     "timestamp": "2025-10-05T16:00:00Z",
     "weather": { "id": 802, "main": "Clouds", "description": "scattered clouds", "icon": "03d" },
@@ -225,7 +225,7 @@
   },
 
   {
-    "zipCode": "0000bc55-b4b5-441d-bebb-f1e8cee80315",
+    "zipCode": "48200",
     "city": "Korucuk",
     "timestamp": "2025-10-05T09:00:00Z",
     "weather": { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04d" },
@@ -233,7 +233,7 @@
     "wind": { "speed": 3.0, "deg": 190 }
   },
   {
-    "zipCode": "0000bc55-b4b5-441d-bebb-f1e8cee80315",
+    "zipCode": "48200",
     "city": "Korucuk",
     "timestamp": "2025-10-05T15:00:00Z",
     "weather": { "id": 741, "main": "Mist", "description": "mist", "icon": "50d" },
@@ -241,7 +241,7 @@
     "wind": { "speed": 1.5, "deg": 150 }
   },
   {
-    "zipCode": "0000bc55-b4b5-441d-bebb-f1e8cee80315",
+    "zipCode": "48200",
     "city": "Korucuk",
     "timestamp": "2025-10-05T21:00:00Z",
     "weather": { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01n" },
