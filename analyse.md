@@ -39,11 +39,11 @@
 
 ## RainDim
 
-| Column | Source | SCD Type |
-|--------|--------|----------|
-| RainSurKey | Gegenereerd (volgnummer) | 1 |
-| RainCode | Weather API (http://openweathermap.org/weather-conditions) op basis van LogDate + Treasure.City coördinaten | 1 |
-| RainDescription | Weather API - beschrijving van weercode | 1 |
+| Column | Source                                                          | SCD Type |
+|--------|-----------------------------------------------------------------|----------|
+| RainSurKey | Gegenereerd (volgnummer)                                        | 1 |
+| RainCode | Weather API code (http://openweathermap.org/weather-conditions) | 1 |
+| RainDescription | Weather API - beschrijving van weercode                         | 1 |
 
 **Opmerking RainDim:** Deze dimensie bevat maximaal 3 rijen:
 - 1 rij voor alle weertypes MET regen (weercode 200-699)
