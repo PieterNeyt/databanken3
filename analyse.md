@@ -77,3 +77,9 @@
 | EndScd           | Gegenereerd: einddatum versie (NULL voor huidige versie) | 2 |
 | isCurrentVersion | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies | 2 |
 
+primary en foreign aanduiden ERD
+treasure type bron analyse aanpassen typeid moe weg
+joinen op datum bij rain???
+nog eens kijken naar userdim
+md5 aanpassen
+country nog toevoegen
