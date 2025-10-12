@@ -55,27 +55,26 @@
 | Column | Source | SCD Type |
 |--------|--------|----------|
 | TreasureTypeSurKey | Gegenereerd (volgnummer) | 1 |
-| TreasureTypeId | Treasure.TreasureId (natuurlijke sleutel) | 1 |
 | Difficulty | Treasure.Difficulty (0-4) | 1 |
 | Terrain | Treasure.Terrain (0-4) | 1 |
 | Size | COUNT(Stage) per Treasure (aantal stages binnen een treasure) | 1 |
 
 ## UserDim
 
-| Column           | Source | SCD Type |
-|------------------|--------|---|
-| UserSurKey       | Gegenereerd (volgnummer - surrogate key, wijzigt per versie) | 2 |
-| UserId           | User.UserId (natuurlijke sleutel, blijft constant over versies) | 2 |
-| firstName        | User.FirstName | 1 |
-| lastName         | User.LastName | 1 |
-| email            | User.Email | 1 |
-| address          | User.Street + User.Number | 1 |
-| country          | User.City.Country | 2 |
-| experienceLevel  | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | 2 |
-| isDedicator      | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE | 2 |
-| StartScd         | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd) | 2 |
-| EndScd           | Gegenereerd: einddatum versie (NULL voor huidige versie) | 2 |
-| isCurrentVersion | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies | 2 |
+| Column          | Source | SCD Type |
+|-----------------|--------|---|
+| UserSurKey      | Gegenereerd (volgnummer - surrogate key, wijzigt per versie) | 2 |
+| UserId          | User.UserId (natuurlijke sleutel, blijft constant over versies) | 2 |
+| firstName       | User.FirstName | 1 |
+| lastName        | User.LastName | 1 |
+| email           | User.Email | 1 |
+| address         | User.Street + User.Number | 1 |
+| country         | User.City.Country | 2 |
+| experienceLevel | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | 2 |
+| dedicator       | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE | 2 |
+| startScd        | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd) | 2 |
+| endScd          | Gegenereerd: einddatum versie (NULL voor huidige versie) | 2 |
+| current         | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies | 2 |
 
 primary en foreign aanduiden ERD
 treasure type bron analyse aanpassen typeid moe weg
