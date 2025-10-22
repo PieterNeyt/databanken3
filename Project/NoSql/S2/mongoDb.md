@@ -116,18 +116,16 @@ Nu gaan we onze eerder gemaakte json bestanden in laden op de databank
 ```bash
 cd "C:\Program Files\MongoDB\Tools\100\bin"
 
-mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00000-f12c4716-9e09-461a-a404-b1545d8da1b5-c000.json"
-mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00001-f12c4716-9e09-461a-a404-b1545d8da1b5-c000.json"
-mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00002-f12c4716-9e09-461a-a404-b1545d8da1b5-c000.json"
-mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00003-f12c4716-9e09-461a-a404-b1545d8da1b5-c000.json"
+mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00000-d0ecfc1f-42ea-42b3-81d2-edec72de0e32-c000.json"
+
 ```
 
 ### Index en sharding
 hier gaan we kiezen op welke index we onze MongoDb gaan opdelen, wij kiezen in dit geval voor country name
 ```bash
 use Catchem
-db.treasure.createIndex({ "country_name": 1 })
-sh.shardCollection("Catchem.treasure", {"country_name": 1})
+db.treasure.createIndex({ "country": "hashed" })
+sh.shardCollection("Catchem.treasure", {"country":"hashed"})
 sh.startBalancer()  
 ```
 
