@@ -1,11 +1,11 @@
 ## 0. Json bestanden aanmaken
-Run de ![S2_MONGODB_SETUP] om 4 json bestanden aan te maken gevuld met de juiste
+Run de ![S2_MONGODB_SETUP] om het json bestand aan te maken gevuld met de juiste gegevens
+Deze zal later gerbuikt worden.
 
 ## 1. Mapstructuur aanmaken
-
+We gaan eerste beginnen met de mappen aan te maken voor onze config en sharding servers.
 Maak een nieuwe map `CatchemData` aan waarin onze database komt. Binnen deze map zullen we onze 3 shard met 2 replica sets aanmaken
 Zorg dat de mappe sturctuur als volgd uitziet:
-
 ```
 CatchemData
 ├─ ConfigDb
@@ -27,8 +27,11 @@ CatchemData
 
 ## 2. Configuratie-servers opzetten
 
-Het is aangeraden minstens **3 config servers** te gebruiken in mongoDb.
-Open 3 terminals en voer volgende commandos uit:
+Het is aangeraden minstens **3 config servers** te gebruiken in mongoDb. \
+Let op de paden na --dbpath moeten overeen komen met **jou** paden van de mappen. \
+Je kan ook kiezen om het start up schript te gebruiken, deze zal alles zelf opstarten. (hier ook goed kijken naar de paden die worden gebruikt!) \
+Als dit handmatig wilt doen doe het volgende. \
+Je begint met 3 terminals te openen en voer volgende commandos uit:
 
 ```bash
 cd "C:\Program Files\MongoDB\Server\8.2\bin"
@@ -37,7 +40,16 @@ mongod --configsvr --replSet configReplSet --port 27019 --dbpath "C:\Program Fil
 mongod --configsvr --replSet configReplSet --port 27020 --dbpath "C:\Program Files\MongoDB\Server\8.2\CatchemData\ConfigDb\config2" --bind_ip localhost
 mongod --configsvr --replSet configReplSet --port 27021 --dbpath "C:\Program Files\MongoDB\Server\8.2\CatchemData\ConfigDb\config3" --bind_ip localhost
 ```
+### Meer uitleg over meegegeven variablelen
+- --configsvr: \
+- --replSet: \
+- configReplSet: \
+- --port: \
+- --dbpath: \
+- --bind_ip: \
+- --localhost: 
 
+---
 ### Config replica set initialiseren
 
 ```bash
@@ -106,31 +118,31 @@ mongosh --port 27040
 sh.addShard("shardReplSet1/localhost:27028")
 sh.addShard("shardReplSet2/localhost:27030")
 sh.addShard("shardReplSet3/localhost:27032")
+```
+
+---
+
+
+## 5. Index en sharding
+hier gaan we kiezen op welke index we onze MongoDb gaan opdelen, wij kiezen in dit geval voor country name
+```bash
+use Catchem
+sh.shardCollection("Catchem.treasure", { "city.id": "hashed" });
 sh.enableSharding("Catchem")
 ```
 
 ---
-
-## 5. Data importeren
+## 6. Data importeren
 Nu gaan we onze eerder gemaakte json bestanden in laden op de databank
 ```bash
 cd "C:\Program Files\MongoDB\Tools\100\bin"
 
-mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00000-ba2d457d-5f68-4c9e-91b5-0ed99df8e2f7-c000.json"
+mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00000-b1af9409-abf1-402b-bacc-4b1e902193f0-c000.json
 
 ```
-
-### Index en sharding
-hier gaan we kiezen op welke index we onze MongoDb gaan opdelen, wij kiezen in dit geval voor country name
-```bash
-use Catchem
-sh.shardCollection("Catchem.treasure", { country: "hashed", "city.name": 1 });
-sh.startBalancer()  
-```
-
 ---
 
-## 6. Handige sharding info commands
+## 7. Handige sharding info commands
 Deze commandos kunne je helpen met meer info te hebben of de sharding is gelukt
 ```bash
 sh.status()          

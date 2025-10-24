@@ -2,8 +2,6 @@
 setlocal
 
 set MONGO_BIN="C:\Program Files\MongoDB\Server\8.2\bin"
-set BASE_PATH="C:\Program Files\MongoDB\Server\8.2\CatchemData"
-
 cd /d %MONGO_BIN%
 
 echo ==========================================
@@ -36,7 +34,7 @@ start /b mongod --shardsvr --replSet shardReplSet3 --port 27033 --dbpath "C:\Pro
 timeout /t 5 /nobreak >nul
 
 REM === MONGOS ===
-start "Mongos" cmd /k mongos --configdb configReplSet/localhost:27019,localhost:27020,localhost:27021 --bind_ip localhost --port 27040
+start "Mongos" cmd /k mongos --configdb configReplSet/localhost:27019 --bind_ip localhost --port 27040
 
 echo ==========================================
 echo MongoDB Cluster successfully started!
