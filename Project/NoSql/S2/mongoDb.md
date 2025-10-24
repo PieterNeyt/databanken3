@@ -126,8 +126,14 @@ sh.addShard("shardReplSet3/localhost:27032")
 ## 5. Index en sharding
 hier gaan we kiezen op welke index we onze MongoDb gaan opdelen, wij kiezen in dit geval voor country name
 ```bash
+use config
+db.settings.updateOne(
+   { _id: "chunksize" },
+   { $set: { _id: "chunksize", value: 1 } },
+   { upsert: true }
+)
 use Catchem
-sh.shardCollection("Catchem.treasure", { "city.id": "hashed" });
+sh.shardCollection("Catchem.treasure", { "city.id": 1 });
 sh.enableSharding("Catchem")
 ```
 
