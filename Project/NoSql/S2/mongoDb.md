@@ -41,19 +41,18 @@ mongod --configsvr --replSet configReplSet --port 27020 --dbpath "C:\Program Fil
 mongod --configsvr --replSet configReplSet --port 27021 --dbpath "C:\Program Files\MongoDB\Server\8.2\CatchemData\ConfigDb\config3" --bind_ip localhost
 ```
 ### Meer uitleg over meegegeven variablelen
-- --configsvr: \
-- --replSet: \
-- configReplSet: \
-- --port: \
-- --dbpath: \
-- --bind_ip: \
-- --localhost: 
+- --configsvr: zegt tegen mongoDb dat je de server die je nu gaat maken een CONFIG server is \
+- --replSet configReplSet: telt mongoDb dat het deel is van een replica set \
+- --port: verteld op welke port je het wilt dat de server opend \
+- --dbpath: het pad je hier achter ingeeft zal mongoDb zien als de plek waar die al de server data moet opslagen \
+- --bind_ip localhost: Dit zorgt ervoor dat enkel jij op dit machine aan de server kan, is goed als veiligheid maatregeb \
 
 ---
 ### Config replica set initialiseren
 
 ```bash
 mongosh --port 27019
+
 rs.initiate({
   _id: "configReplSet",
   members: [
@@ -62,9 +61,11 @@ rs.initiate({
     {_id: 2, host:"localhost:27021"}
   ]
 })
-
-rs.status()
 ```
+### Meer uitleg
+- mongosh --port 27019: hier zeg je dat je de mongosh terminal wilt openen en verbind met port 27019 \
+- je gaat bij de initiate zeggen dat je een replica set wilt aanmaken met volgende naam en dat am de onderstaande servers toebehoren tot deze replicaset
+
 Status Controleren
 ```bash
 rs.status()
@@ -94,6 +95,13 @@ mongod --shardsvr --replSet shardReplSet3 --port 27032 --dbpath "C:\Program File
 mongod --shardsvr --replSet shardReplSet3 --port 27033 --dbpath "C:\Program Files\MongoDB\Server\8.2\CatchemData\Shard3\ReplicaSet2" --bind_ip localhost
 ```
 
+### Meer uitleg
+- --shardsvr: Dit toont aan dat de server die je nu gaat openen, zal functioneren als een shard server.
+- --replSet shardReplSet1: Zegt dat deze server deel zal worden van de Replica set shardReplSet1 
+- --port 27028 :Vertelt op welke poort je de server zal willen openen 
+- --dbpath [PATH]: Dit verteld MongoDB waar het alle data van deze server zal moeten opslagen.
+- --bind_ip localhost: Dit zorgt ervoor dat enkel jij, op deze machine, aan de server kan. 
+                         Het zorgt ervoor dat mensen de configuratie server niet zomaar kunnen aanraken. Altijd een handige veiligheidsmaatregel!
 ### Shard replica sets initialiseren
 
 ```bash
@@ -106,7 +114,9 @@ rs.initiate({_id:"shardReplSet2", members:[{_id: 0, host:"localhost:27030"}, {_i
 mongosh --port 27032
 rs.initiate({_id:"shardReplSet3", members:[{_id: 0, host:"localhost:27032"}, {_id: 1, host:"localhost:27033"}]})
 ```
-
+### meer uitleg
+de _ID variable en de member poorten zullen moeten aangepast worden voor elke shard natuurlijk. 
+Ook hier kan gecontroleerd worden of onze replicasets correct opgezet zijn door “rs.status()” in te voeren.
 ---
 
 ## 4. Mongos router starten en shards toevoegen
