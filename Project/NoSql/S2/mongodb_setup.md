@@ -1,6 +1,6 @@
 ## 0. Json bestanden aanmaken
 Run de ![S2_MONGODB_SETUP] om het json bestand aan te maken gevuld met de juiste gegevens
-Deze zal later gerbuikt worden.
+Deze zal later gerbuikt worden om de data in de MongoDb te vullen.
 
 ## 1. Mapstructuur aanmaken
 We gaan eerste beginnen met de mappen aan te maken voor onze config en sharding servers.
@@ -115,8 +115,8 @@ mongosh --port 27032
 rs.initiate({_id:"shardReplSet3", members:[{_id: 0, host:"localhost:27032"}, {_id: 1, host:"localhost:27033"}]})
 ```
 ### meer uitleg
-de _ID variable en de member poorten zullen moeten aangepast worden voor elke shard natuurlijk. 
-Ook hier kan gecontroleerd worden of onze replicasets correct opgezet zijn door “rs.status()” in te voeren.
+We gaan hier net zoals bij de config zeggen dat we sommige servers wille gebruiken als replica servers, dit doe je door op elke shard te loggen \
+mongosh --port -> en de commandos uit te voeren
 ---
 
 ## 4. Mongos router starten en shards toevoegen
@@ -130,11 +130,12 @@ sh.addShard("shardReplSet2/localhost:27030")
 sh.addShard("shardReplSet3/localhost:27032")
 ```
 ### meer uitleg
-nu kun je de server opstarten, dankzij je eerder alles hebt gelinkt aan server 27019, gaat hij hier alles de drie binden via dat aan 27040 \
-Dan gaan we de shards toevoegen aan de hand van addShard() en dan met elkaar linken \
-
+- Mongos: Start het Query router proces.
+- --configdb configReplSet/localhost:27019: Verteld mongoS welke config server replica set hij moet gebruiken, en geeft één van de members van deze set mee zodat de MongoS instantie de hele replica set kan te weten komen.
+- --bind_ip localhost: Dit zorgt ervoor dat enkel jij, op deze machine, aan de server kan. Het zorgt ervoor dat mensen de configuratie server niet zomaar kunnen aanraken. Altijd een handige veiligheidsmaatregel!
+- --port 27040: Verteld op welke poort mongos moet luisteren voor connecties. 
+- sh.addShard(): met dit ga je de shards toevoegen via het eerste lid van de replica sets, zal dan ook via deze weten welke de andere leden zijn
 ---
-
 
 ## 5. Index en sharding
 hier gaan we kiezen op welke index we onze MongoDb gaan opdelen, wij kiezen in dit geval voor country name
@@ -149,8 +150,11 @@ use Catchem
 sh.shardCollection("Catchem.treasure", { "city.id": 1 });
 sh.enableSharding("Catchem")
 ```
-we gaan dan ook hier de chunk size invullen zodat alles goed word opgedeeld in veel chunks 
-dan ga ik mijn datank gaa nva ncathcem en ik ga hier zeggen dat alles moet worden geshard op city.id
+### Meer uitleg
+- We gaan hier eerst in de config gaan en dan zeggen in de settings hoe groot we de chunksize willen
+- use Catchem: Hier gaan we naar onze db 
+- sh.shardCollection(): hier geen we aanduiden op welke attributt we willen dat mongo de data shard
+- sh.enableSharding(): dan moet je natuurlijk sharding aan doen op de db
 ---
 ## 6. Data importeren
 Nu gaan we onze eerder gemaakte json bestanden in laden op de databank
@@ -160,7 +164,8 @@ cd "C:\Program Files\MongoDB\Tools\100\bin"
 mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00000-b1af9409-abf1-402b-bacc-4b1e902193f0-c000.json
 
 ```
-En dan hier laden we al de data in van de json die we eerder hebben aangemaakt
+### Meer uitleg
+- Nu Dat dit allemaal klaar is kunne we eindelijk de eerder gemaakte JSON file importeren in de collection treasure
 ---
 
 ## 7. Handige sharding info commands
@@ -173,4 +178,22 @@ use Catchem
 db.treasure.getShardDistribution() 
 ```
 
+## Queries
+````bash
+db.treasures.find({
+  country: "India",
+  difficulty: { $gte: 3 }
+})
+
+db.treasures.find({
+  "city.name": "Sarandapalli",
+  terrain: 2
+}, {
+  _id: 1,
+  difficulty: 1,
+  terrain: 1,
+  "city.name": 1,
+  "country": 1
+})
+````
 ---
