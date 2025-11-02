@@ -13,37 +13,37 @@
 | RainSurKey | RainDim.RainSurKey (via Weather API op basis van LogDate + Treasure.City coördinaten) | n.v.t. (fact table) |
 | TreasureTypeSurKey | TreasureTypeDim.TreasureTypeSurKey                                                    | n.v.t. (fact table) |
 | StandardValue | standaard 1                                                                           | n.v.t. (fact table) |
-| Duration | Berekend: LogDate - SessionStart                                                      | n.v.t. (fact table) |
+| Duration | Berekend: Log.LogDate - Log.SessionStart                                                      | n.v.t. (fact table) |
 | CreationDate | Log.LogDate (timestamp van de log)                                                    | n.v.t. (fact table) |
 
 ## DateDim
 
-| Column        | Source | SCD Type |
-|---------------|--------|----------|
-| DateSurKey    | Gegenereerd (datum in YYYYMMDD formaat) | 1 |
-| DateId        | Gegenereerd (volgnummer) | 1 |
-| Day           | Afgeleid uit Log.LogDate | 1 |
-| Week          | Afgeleid uit Log.LogDate | 1 |
-| Month         | Afgeleid uit Log.LogDate | 1 |
-| Year          | Afgeleid uit Log.LogDate | 1 |
-| MonthOfThYear | Afgeleid uit Log.LogDate | 1 |
-| DayOfTheWeek  | Afgeleid uit Log.LogDate | 1 |
-| IsWeekDay     | Afgeleid uit Log.LogDate | 1 |
+| Column         | Source | SCD Type |
+|----------------|--------|----------|
+| DateSurKey     | Gegenereerd (datum in YYYYMMDD formaat) | nvt       |
+| DateId         | Gegenereerd (volgnummer) | n.v.t.        |
+| Day            | Afgeleid uit Log.LogDate | 1        |
+| Week           | Afgeleid uit Log.LogDate | 1        |
+| Month          | Afgeleid uit Log.LogDate | 1        |
+| Year           | Afgeleid uit Log.LogDate | 1        |
+| MonthOfTheYear | Afgeleid uit Log.LogDate | 1        |
+| DayOfTheWeek   | Afgeleid uit Log.LogDate | 1        |
+| IsWeekDay      | Afgeleid uit Log.LogDate | 1        |
 
 ## SeasonDim
 
 | Column | Source                                                                   | SCD Type |
 |--------|--------------------------------------------------------------------------|----------|
-| SeasonSurKey | Gegenereerd (volgnummer)                                                 | 1 |
-| SeasonName | Afgeleid uit Log.LogDate + coordinaten laatste stage van treasure stages | 1 |
+| SeasonSurKey | Gegenereerd (volgnummer)                                                 | nvt        |
+| SeasonName | Afgeleid uit Log.LogDate + coordinaten laatste stage van treasure stages | 1        |
 
 ## RainDim
 
 | Column | Source                                                          | SCD Type |
 |--------|-----------------------------------------------------------------|----------|
-| RainSurKey | Gegenereerd (volgnummer)                                        | 1 |
-| RainCode | Weather API code (http://openweathermap.org/weather-conditions) | 1 |
-| RainDescription | Weather API - beschrijving van weercode                         | 1 |
+| RainSurKey | Gegenereerd (volgnummer)                                        | nvt        |
+| RainCode | Weather API code (http://openweathermap.org/weather-conditions) | 1        |
+| RainDescription | Weather API - beschrijving van weercode                         | 1        |
 
 **Opmerking RainDim:** Deze dimensie bevat maximaal 3 rijen:
 - 1 rij voor alle weertypes MET regen (weercode 200-699)
@@ -54,16 +54,16 @@
 
 | Column | Source | SCD Type |
 |--------|--------|----------|
-| TreasureTypeSurKey | Gegenereerd (volgnummer) | 1 |
-| Difficulty | Treasure.Difficulty (0-4) | 1 |
-| Terrain | Treasure.Terrain (0-4) | 1 |
-| Size | COUNT(Stage) per Treasure (aantal stages binnen een treasure) | 1 |
+| TreasureTypeSurKey | Gegenereerd (volgnummer) | nvt        |
+| Difficulty | Treasure.Difficulty (0-4) | 1        |
+| Terrain | Treasure.Terrain (0-4) | 1        |
+| Size | COUNT(Stage) per Treasure (aantal stages binnen een treasure) | 1        |
 
 ## UserDim
 
 | Column          | Source                                                                                                | SCD Type |
 |-----------------|-------------------------------------------------------------------------------------------------------|---|
-| UserSurKey      | Gegenereerd (volgnummer - surrogate key, wijzigt per versie)                                          | 2 |
+| UserSurKey      | Gegenereerd (volgnummer - surrogate key, wijzigt per versie)                                          | nvt |
 | UserId          | User.UserId (natuurlijke sleutel, blijft constant over versies)                                       | 2 |
 | firstName       | User.FirstName                                                                                        | 1 |
 | lastName        | User.LastName                                                                                         | 1 |
