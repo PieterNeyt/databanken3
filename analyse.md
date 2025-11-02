@@ -56,29 +56,24 @@
 |--------|--------|----------|
 | TreasureTypeSurKey | Gegenereerd (volgnummer) | nvt        |
 | Difficulty | Treasure.Difficulty (0-4) | 1        |
+| DifficultyName | Afgeleid van Treasure.Difficulty | 1        |
 | Terrain | Treasure.Terrain (0-4) | 1        |
 | Size | COUNT(Stage) per Treasure (aantal stages binnen een treasure) | 1        |
 
 ## UserDim
 
 | Column          | Source                                                                                                | SCD Type |
-|-----------------|-------------------------------------------------------------------------------------------------------|---|
-| UserSurKey      | Gegenereerd (volgnummer - surrogate key, wijzigt per versie)                                          | nvt |
-| UserId          | User.UserId (natuurlijke sleutel, blijft constant over versies)                                       | 2 |
-| firstName       | User.FirstName                                                                                        | 1 |
-| lastName        | User.LastName                                                                                         | 1 |
-| email           | User.Email                                                                                            | 1 |
-| address         | User.Street + User.Number                                                                             | 1 |
-| country         | User.city_id -> city_id, city.country_code -> country_code                                            | 2 |
-| experienceLevel | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | 2 |
-| dedicator       | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE                                 | 2 |
-| startScd        | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd)                                | 2 |
-| endScd          | Gegenereerd: einddatum versie (NULL voor huidige versie)                                              | 2 |
-| current         | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies                                 | 2 |
+|-----------------|-------------------------------------------------------------------------------------------------------|----------|
+| UserSurKey      | Gegenereerd (volgnummer - surrogate key, wijzigt per versie)                                          | nvt      |
+| UserId          | User.UserId (natuurlijke sleutel, blijft constant over versies)                                       | 2        |
+| firstName       | User.FirstName                                                                                        | 1        |
+| lastName        | User.LastName                                                                                         | 1        |
+| email           | User.Email                                                                                            | 1        |
+| address         | User.Street + User.Number                                                                             | 1        |
+| country         | User.city_id -> city_id, city.country_code -> country_code                                            | 1        |
+| experienceLevel | Berekend obv COUNT(Log WHERE LogType=2): Starter (0), Amateur (<4), Professional (4-10), Pirate (>10) | 2        |
+| dedicator       | Berekend: TRUE als User is admin van minimum 1 Treasure, anders FALSE                                 | 2        |
+| startScd        | Gegenereerd: begindatum versie (datum wanneer deze versie actief werd)                                | 2        |
+| endScd          | Gegenereerd: einddatum versie (NULL voor huidige versie)                                              | 2        |
+| current         | Gegenereerd: TRUE voor huidige versie, FALSE voor historische versies                                 | 2        |
 
-primary en foreign aanduiden ERD
-treasure type bron analyse aanpassen typeid moe weg
-joinen op datum bij rain???
-nog eens kijken naar userdim
-md5 aanpassen
-country nog toevoegen
