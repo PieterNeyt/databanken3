@@ -129,6 +129,9 @@ sh.addShard("shardReplSet1/localhost:27028")
 sh.addShard("shardReplSet2/localhost:27030")
 sh.addShard("shardReplSet3/localhost:27032")
 ```
+### meer uitleg
+nu kun je de server opstarten, dankzij je eerder alles hebt gelinkt aan server 27019, gaat hij hier alles de drie binden via dat aan 27040 \
+Dan gaan we de shards toevoegen aan de hand van addShard() en dan met elkaar linken \
 
 ---
 
@@ -146,7 +149,8 @@ use Catchem
 sh.shardCollection("Catchem.treasure", { "city.id": 1 });
 sh.enableSharding("Catchem")
 ```
-
+we gaan dan ook hier de chunk size invullen zodat alles goed word opgedeeld in veel chunks 
+dan ga ik mijn datank gaa nva ncathcem en ik ga hier zeggen dat alles moet worden geshard op city.id
 ---
 ## 6. Data importeren
 Nu gaan we onze eerder gemaakte json bestanden in laden op de databank
@@ -156,6 +160,7 @@ cd "C:\Program Files\MongoDB\Tools\100\bin"
 mongoimport --port 27040 --db Catchem --collection treasure --file "C:\Kdg Projecten\PyCharm\ProjectDP\Project\NoSql\S2\treasures_export.json\part-00000-b1af9409-abf1-402b-bacc-4b1e902193f0-c000.json
 
 ```
+En dan hier laden we al de data in van de json die we eerder hebben aangemaakt
 ---
 
 ## 7. Handige sharding info commands
